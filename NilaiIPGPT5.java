@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class NilaiIPS {
+public class NilaiIPGPT5 {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
@@ -26,32 +26,25 @@ public class NilaiIPS {
         System.out.println("============================================================");
         System.out.println("=======================2023-GASAL===========================");
         System.out.println("============================================================");
-        System.out.println("|   Mata Kuliah   |    SKS    |    Nilai Huruf   |   S*N   |");
-
-        int totalsks = 0;
-        double totalSN = 0.0;
+        System.out.println("|   Mata Kuliah   |    SKS   |    Nilai Huruf   |    S*N   |");
 
         for (int a = 0; a < jumlahmatkul; a++) {
             String nilaiHuruf = inputhuruf[a][2];
+
             int sksMataKuliah = Integer.parseInt(inputsks[a][1]);
-            double snMataKuliah = getBobotNilai(nilaiHuruf) * sksMataKuliah;
 
-            totalsks += sksMataKuliah;
-            totalSN += snMataKuliah;
-
-            System.out.printf("|    %-1s     |     %-4s  |         %-2s       |   %-5s |\n",
-                    inputkode[a][0], inputsks[a][1], nilaiHuruf, snMataKuliah);
+            if((huruf=="A") ||(huruf=="B")||(huruf=="C")||(huruf=="D")||(huruf=="E")){
+            System.out.println(
+                    "|    " + inputkode[a][0] + "     |     " + inputsks[a][1] + "    |         " + nilaiHuruf + "        |    "
+                            + (getBobotNilai(nilaiHuruf) * sksMataKuliah) +"  |");
         }
-
-        double ips = totalSN / totalsks;
-
-        System.out.println("============================================================");
-        System.out.println("==================JUMLAH SKS " +totalsks +" SKS=========================");
-        System.out.print("=========================IPS "); 
-        System.out.printf("%.2f",ips); 
-        System.out.print("===========================");
-        System.out.println();
-        System.out.println("============================================================");
+    
+            else{
+            System.out.println(
+                    "|    " + inputkode[a][0] + "     |     " + inputsks[a][1] + "    |         " + nilaiHuruf + "       |    "
+                            + (getBobotNilai(nilaiHuruf) * sksMataKuliah) +"  |");
+            }
+        }
     }
 
     // Fungsi untuk mendapatkan bobot nilai huruf
@@ -76,4 +69,3 @@ public class NilaiIPS {
         }
     }
 }
-
